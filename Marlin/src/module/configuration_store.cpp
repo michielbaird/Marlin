@@ -2026,7 +2026,7 @@ void MarlinSettings::reset() {
   #if HAS_SCARA_OFFSET
     ZERO(scara_home_offset);
   #elif HAS_HOME_OFFSET
-    ZERO(home_offset);
+    //ZERO(home_offset);
   #endif
 
   #if HAS_HOTEND_OFFSET

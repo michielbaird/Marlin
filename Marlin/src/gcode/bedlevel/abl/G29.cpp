@@ -220,11 +220,11 @@ G29_TYPE GcodeSuite::G29() {
       ABL_VAR  int8_t PR_INNER_VAR;
     #endif
 
-    ABL_VAR int left_probe_bed_position, right_probe_bed_position, front_probe_bed_position, back_probe_bed_position;
+    ABL_VAR float left_probe_bed_position, right_probe_bed_position, front_probe_bed_position, back_probe_bed_position;
     ABL_VAR float xGridSpacing = 0, yGridSpacing = 0;
 
     #if ENABLED(AUTO_BED_LEVELING_LINEAR)
-      ABL_VAR uint8_t abl_grid_points_x = GRID_MAX_POINTS_X,
+      ABL_VAR float abl_grid_points_x = GRID_MAX_POINTS_X,
                       abl_grid_points_y = GRID_MAX_POINTS_Y;
       ABL_VAR bool do_topography_map;
     #else // Bilinear
@@ -392,11 +392,15 @@ G29_TYPE GcodeSuite::G29() {
         back_probe_bed_position  = MIN(front_probe_bed_position + size, MAX_PROBE_Y);
       }
       else {
-        left_probe_bed_position  = parser.seenval('L') ? (int)RAW_X_POSITION(parser.value_linear_units()) : LEFT_PROBE_BED_POSITION;
-        right_probe_bed_position = parser.seenval('R') ? (int)RAW_X_POSITION(parser.value_linear_units()) : RIGHT_PROBE_BED_POSITION;
-        front_probe_bed_position = parser.seenval('F') ? (int)RAW_Y_POSITION(parser.value_linear_units()) : FRONT_PROBE_BED_POSITION;
-        back_probe_bed_position  = parser.seenval('B') ? (int)RAW_Y_POSITION(parser.value_linear_units()) : BACK_PROBE_BED_POSITION;
+        left_probe_bed_position  = parser.seenval('L') ? (float)RAW_X_POSITION(parser.value_linear_units()) : LEFT_PROBE_BED_POSITION;
+        right_probe_bed_position = parser.seenval('R') ? (float)RAW_X_POSITION(parser.value_linear_units()) : RIGHT_PROBE_BED_POSITION;
+        front_probe_bed_position = parser.seenval('F') ? (float)RAW_Y_POSITION(parser.value_linear_units()) : FRONT_PROBE_BED_POSITION;
+        back_probe_bed_position  = parser.seenval('B') ? (float)RAW_Y_POSITION(parser.value_linear_units()) : BACK_PROBE_BED_POSITION;
       }
+      SERIAL_ECHOPAIR("Left_probe_bed_position(X) (", left_probe_bed_position);
+      SERIAL_ECHOPAIR("Right_probe_bed_position(X) (", right_probe_bed_position);
+      SERIAL_ECHOPAIR("Front_probe_bed_position(Y) (", front_probe_bed_position);
+      SERIAL_ECHOPAIR("BACK_probe_bed_position(Y) (", back_probe_bed_position);
 
       if (
         #if IS_SCARA || ENABLED(DELTA)

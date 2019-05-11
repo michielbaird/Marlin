@@ -182,7 +182,7 @@ float cartes[XYZ];
 #if HAS_HOME_OFFSET
   // This offset is added to the configured home position.
   // Set by M206, M428, or menu item. Saved to EEPROM.
-  float home_offset[XYZ] = { 0 };
+  float home_offset[XYZ] = { X_MIN_POS, Y_MIN_POS, Z_MIN_POS };
 #endif
 #if HAS_HOME_OFFSET && HAS_POSITION_SHIFT
   // The above two are combined to save on computes
