@@ -300,7 +300,7 @@ void homeaxis(const AxisEnum axis);
      *          nozzle must be be able to reach +10,-10.
      */
     inline bool position_is_reachable_by_probe(const float &rx, const float &ry) {
-      return position_is_reachable(rx - (X_PROBE_OFFSET_FROM_EXTRUDER), ry - (Y_PROBE_OFFSET_FROM_EXTRUDER));
+      return position_is_reachable(rx - (X_PROBE_OFFSET_FROM_EXTRUDER), ry -   (Y_PROBE_OFFSET_FROM_EXTRUDER));
           // && WITHIN(rx, MIN_PROBE_X - slop, MAX_PROBE_X + slop)
           // && WITHIN(ry, MIN_PROBE_Y - slop, MAX_PROBE_Y + slop);
     }
