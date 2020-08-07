@@ -50,7 +50,7 @@
   #endif
 #else
   #define X_MIN_PIN                        P1_29  // X-
-  #define X_MAX_PIN                        P1_28  // X+
+  #define X_MAX_PIN                        -1  // X+
 #endif
 
 #if Y_STALL_SENSITIVITY
@@ -62,7 +62,7 @@
   #endif
 #else
   #define Y_MIN_PIN                        P1_27  // Y-
-  #define Y_MAX_PIN                        P1_26  // Y+
+  #define Y_MAX_PIN                        -1  // Y+
 #endif
 
 #if Z_STALL_SENSITIVITY
@@ -74,7 +74,7 @@
   #endif
 #else
   #define Z_MIN_PIN                        P1_25  // Z-
-  #define Z_MAX_PIN                        P1_24  // Z+
+  #define Z_MAX_PIN                        -1  // Z+
 #endif
 
 #define ONBOARD_ENDSTOPPULLUPS                    // Board has built-in pullups
@@ -97,7 +97,7 @@
 // Filament Runout Sensor
 //
 #ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN                   P1_28
+  #define FIL_RUNOUT_PIN                   P1_24
 #endif
 
 //
